@@ -152,6 +152,12 @@ body {
 }
 
 
+@media (orientation: landscape) and (max-height: 500px) {
+  .explore-nav-box {
+    font-size: clamp(0.35rem, 1.2vh, 1rem);
+  }
+}
+
 /* Individual box positions — percentages of the image dimensions */
 #nav-amp     { left: 17%;  top: 45.5%; width: 25%; height: 9%; }
 #nav-cab     { left: 46%;  top: 45.5%; width: 25%; height: 9%; }
