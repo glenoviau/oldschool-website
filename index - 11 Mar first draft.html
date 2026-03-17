@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Old School Amplifiers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Highway+Gothic&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #A8CEE0;
+      --blue-dark: #8BB8CE;
+      --ink: #0f0f0d;
+      --binding: 68px;
+      --rule: rgba(15,15,13,0.18);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--blue);
+      color: var(--ink);
+      font-family: 'Highway Gothic', 'Arial Narrow', sans-serif;
+      padding-right: var(--binding);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── BINDING STRIP (right side, like Hilroy spine) ── */
+    .binding {
+      position: fixed;
+      right: 0;
+      top: 0;
+      width: var(--binding);
+      height: 100%;
+      min-height: 100vh;
+      background: var(--ink);
+      z-index: 1000;
+      overflow: hidden;
+    }
+
+    /* ruled lines + dot grid pattern */
+    .binding::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      /* solid ruled lines */
+      background-image:
+        linear-gradient(to bottom, rgba(168,206,224,0.3) 1px, transparent 1px),
+        radial-gradient(circle, rgba(168,206,224,0.4) 1.3px, transparent 1.3px);
+      background-size: 100% 36px, 10px 18px;
+      background-position: 0 17px, 5px 8px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.85rem 2rem;
+      border-bottom: 2.5px solid var(--ink);
+      background: var(--blue);
+    }
+
+    .nav-logo img {
+      height: 32px;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-links a:hover { text-decoration: underline; }
+
+    .nav-cta {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--blue);
+      background: var(--ink);
+      padding: 0.5rem 1.3rem;
+      text-decoration: none;
+    }
+
+    .nav-cta:hover { opacity: 0.8; }
+
+    /* ── HERO — looks like the Hilroy cover ── */
+    .hero {
+      min-height: calc(100vh - 56px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 4rem 3.5rem;
+      text-align: center;
+      border-bottom: 2.5px solid var(--ink);
+    }
+
+    .hero-logo {
+      width: clamp(180px, 28vw, 300px);
+      margin-bottom: 2.2rem;
+    }
+
+    .hero-spec {
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink);
+      opacity: 0.65;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-spec span { margin: 0 0.4rem; }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 6vw, 4.8rem);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      line-height: 1.05;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2vw, 1.5rem);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink);
+      opacity: 0.65;
+      margin-bottom: 3rem;
+    }
+
+    /* NAME▼NOM / SUBJECT▼SUJET style fill-in lines */
+    .hero-fields {
+      width: 100%;
+      max-width: 500px;
+      border-top: 1.5px solid var(--ink);
+      padding-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .hero-field {
+      display: flex;
+      align-items: flex-end;
+      gap: 0.6rem;
+    }
+
+    .hero-field label {
+      font-size: 0.76rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      white-space: nowrap;
+      flex-shrink: 0;
+      padding-bottom: 3px;
+      color: var(--ink);
+    }
+
+    .hero-field label .alt {
+      font-weight: 400;
+      opacity: 0.5;
+    }
+
+    .field-line {
+      flex: 1;
+      height: 1px;
+      background: var(--ink);
+      opacity: 0.45;
+      margin-bottom: 3px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      background: var(--ink);
+      padding: 0.85rem 2rem;
+      text-decoration: none;
+      border: 2px solid var(--ink);
+    }
+
+    .btn-primary:hover { opacity: 0.82; }
+
+    .btn-ghost {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink);
+      background: transparent;
+      padding: 0.85rem 2rem;
+      text-decoration: none;
+      border: 2px solid var(--ink);
+    }
+
+    .btn-ghost:hover { background: rgba(15,15,13,0.08); }
+
+    /* ── INNER PAGE SECTIONS — dotted interlined notebook paper ── */
+    .page-section {
+      border-bottom: 2.5px solid var(--ink);
+      /* dotted interlined: solid baseline every 40px, dot midline every 20px */
+      background-color: #EEF4F7;
+      background-image:
+        linear-gradient(to bottom, rgba(15,15,13,0.12) 1px, transparent 1px),
+        radial-gradient(circle, rgba(15,15,13,0.18) 1px, transparent 1px);
+      background-size: 100% 40px, 8px 20px;
+      background-position: 0 39px, 4px 19px;
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 6rem 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1.7fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .section-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink);
+      opacity: 0.55;
+      margin-bottom: 0.8rem;
+    }
+
+    .section-heading {
+      font-size: clamp(1.3rem, 2.2vw, 1.9rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      line-height: 1.15;
+      color: var(--ink);
+    }
+
+    .about-right p {
+      font-size: 0.95rem;
+      line-height: 1.85;
+      color: var(--ink);
+      opacity: 0.82;
+      margin-bottom: 1.2rem;
+    }
+
+    /* ── PILLARS ── */
+    .pillars {
+      background: var(--blue);
+      border-bottom: 2.5px solid var(--ink);
+    }
+
+    .pillars-inner {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 6rem 3rem;
+    }
+
+    .pillars-header {
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1.5px solid var(--ink);
+    }
+
+    .pillars-header h2 {
+      font-size: clamp(1.3rem, 2.2vw, 1.9rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--ink);
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 2px solid var(--ink);
+    }
+
+    .pillar {
+      padding: 2rem 1.5rem;
+      border-right: 2px solid var(--ink);
+    }
+
+    .pillar:last-child { border-right: none; }
+
+    .pillar-num {
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink);
+      opacity: 0.4;
+      margin-bottom: 0.8rem;
+    }
+
+    .pillar h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--ink);
+      margin-bottom: 0.7rem;
+    }
+
+    .pillar p {
+      font-size: 0.88rem;
+      line-height: 1.75;
+      color: var(--ink);
+      opacity: 0.75;
+    }
+
+    /* ── CTA ── */
+    .cta-wrap {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 6rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 3rem;
+    }
+
+    .cta-wrap h2 {
+      font-size: clamp(1.6rem, 3vw, 2.6rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+      color: var(--ink);
+      max-width: 18ch;
+    }
+
+    .cta-right {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      flex-shrink: 0;
+    }
+
+    .cta-right p {
+      font-size: 0.85rem;
+      color: var(--ink);
+      opacity: 0.68;
+      max-width: 28ch;
+      line-height: 1.6;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 2.5px solid var(--ink);
+      background: var(--blue);
+      padding: 1.4rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer img { height: 26px; }
+
+    footer p {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink);
+      opacity: 0.5;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 720px) {
+      :root { --binding: 44px; }
+
+      .nav-links { display: none; }
+
+      .hero { padding: 3.5rem 1.5rem 3rem; }
+
+      .about {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 4rem 1.5rem;
+      }
+
+      .pillars-inner { padding: 4rem 1.5rem; }
+
+      .pillars-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pillar {
+        border-right: none;
+        border-bottom: 2px solid var(--ink);
+      }
+
+      .pillar:last-child { border-bottom: none; }
+
+      .cta-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 4rem 1.5rem;
+      }
+
+      footer { flex-direction: column; gap: 0.75rem; text-align: center; padding: 1.2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- RIGHT BINDING STRIP -->
+  <div class="binding" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" aria-label="Old School Amplifiers home">
+      <img class="nav-logo" src="Style/black logo clear background.png" alt="Old School Amplifiers logo" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#craft">Our Craft</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">Get in Touch</a>
+  </nav>
+
+  <!-- HERO — styled like the Hilroy notebook cover -->
+  <section class="hero">
+    <img
+      class="hero-logo"
+      src="Style/black logo clear background.png"
+      alt="Old School Amplifiers"
+    />
+
+    <p class="hero-spec">
+      Handcrafted Audio
+      <span>▼</span>
+      Vacuum Tube
+      <span>▼</span>
+      Hand-Wired
+    </p>
+
+    <h1 class="hero-title">Old School Amplifiers</h1>
+    <p class="hero-subtitle">Sound The Way It Was Meant To Be Heard</p>
+
+    <!-- NAME▼NOM / SUBJECT▼SUJET style fill-in fields -->
+    <div class="hero-fields">
+      <div class="hero-field">
+        <label>Shop <span class="alt">▼ Browse Our Work</span></label>
+        <div class="field-line"></div>
+      </div>
+      <div class="hero-field">
+        <label>Contact <span class="alt">▼ Get a Quote</span></label>
+        <div class="field-line"></div>
+      </div>
+    </div>
+
+    <div class="hero-actions">
+      <a class="btn-primary" href="#contact">Shop &amp; Inquire</a>
+      <a class="btn-ghost" href="#about">Our Story</a>
+    </div>
+  </section>
+
+  <!-- ABOUT — inner dotted interlined page -->
+  <section class="page-section" id="about">
+    <div class="about">
+      <div>
+        <p class="section-label">Who We Are</p>
+        <h2 class="section-heading">Built on a love for honest, warm sound</h2>
+      </div>
+      <div class="about-right">
+        <p>
+          Old School Amplifiers was founded by players and tinkerers who grew up chasing tone. We believe the best amplifiers were designed decades ago — they just need a skilled hand to bring them back.
+        </p>
+        <p>
+          Every piece that leaves our bench is tested, played, and approved by ear. No shortcuts. No mass production. Just real amplifiers for people who care deeply about sound.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILLARS — back on the blue cover color -->
+  <section class="pillars" id="craft">
+    <div class="pillars-inner">
+      <div class="pillars-header">
+        <p class="section-label">Our Craft</p>
+        <h2>Everything we do starts with the circuit</h2>
+      </div>
+      <div class="pillars-grid">
+        <div class="pillar">
+          <p class="pillar-num">Subject 01</p>
+          <h3>Authentic Restoration</h3>
+          <p>We source original or correct-spec parts to keep vintage amplifiers true to their era — right down to the capacitors and cloth-wrapped wire.</p>
+        </div>
+        <div class="pillar">
+          <p class="pillar-num">Subject 02</p>
+          <h3>Custom Builds</h3>
+          <p>Have a tone in mind? We build hand-wired, point-to-point amplifiers from the ground up, tailored to your playing style and sonic goals.</p>
+        </div>
+        <div class="pillar">
+          <p class="pillar-num">Subject 03</p>
+          <h3>Service &amp; Repair</h3>
+          <p>From a hum you can't shake to a complete recap, we diagnose and repair all tube amplifiers with care, transparency, and a fair turnaround.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA — dotted interlined page -->
+  <section class="page-section" id="contact">
+    <div class="cta-wrap">
+      <h2>Ready to find your sound?</h2>
+      <div class="cta-right">
+        <p>Reach out to discuss a build, a restoration, or just to talk tone.</p>
+        <a class="btn-primary" href="mailto:hello@oldschoolamplifiers.com">Send Us a Message</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <img src="Style/black logo clear background.png" alt="Old School Amplifiers" />
+    <p>&copy; 2026 Old School Amplifiers. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+We are building a landing page website.
+
+There is a sub-directory available called Design Info. You can find an image in that sub-directory called Landing Page.jpg which is a mockup showing the layout I want. Use it only to understand 
+the structure, spacing, and arrangement of elements. All actual image 
+assets are provided as separate files — reference those files directly 
+in the HTML and CSS.
+
+The hero image is already saved at /Design Info/hero.jpg — use this exact 
+file. Do not generate, replace, or modify it. Place it in the hero 
+section as-is.
+
+The background pattern is at /Design Info/background pattern.png — use this as a 
+CSS background-image tile. Do not recreate it with CSS or SVG. The background color behind the background pattern is #F5F5DC
+
+The only font you will ever use on this website is Highway Gothic
+
+On the hero.jpg image you will find two rectangular buttons, one labeled Explore and one labeled Contact. When clicked on Explore, the webpage explore.html will open. This webpage is already in the directory, do not change it. When clicked on Contact please design a pop-up form that opens. The form should use a consistent colour palette and font, include the logo, and use the same background pattern. The logo file can be found at /Design Info/logo.png. The contact form should include mandatory fields for Name, e-mail address, and message (up to 250 characters) and a button for send. Follow the instructions in the Claude.md file for how to manage e-mail messages.
+
+
+

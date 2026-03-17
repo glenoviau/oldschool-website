@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Old School Amplifiers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Highway+Gothic&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <main>
+    <div class="hero-wrapper">
+
+      <img
+        src="Design%20Info/Hero.jpg"
+        alt="Old School Amplifiers — Custom amplifiers, attenuators, speaker cabinets. Dedicated to the art of vacuum tube guitar amplifiers."
+        class="hero-img"
+      />
+
+      <!-- Transparent overlay buttons aligned to the Explore / Contact buttons in the image -->
+      <a
+        href="explore.html"
+        class="hero-btn btn-explore"
+        aria-label="Explore our products"
+      ></a>
+
+      <button
+        class="hero-btn btn-contact"
+        id="btnContact"
+        aria-label="Contact us"
+        aria-haspopup="dialog"
+      ></button>
+
+    </div>
+  </main>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       CONTACT MODAL
+  ════════════════════════════════════════════════════ -->
+  <div
+    class="modal-overlay"
+    id="contactModal"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Contact us"
+  >
+    <div class="modal-frame">
+
+      <!-- Contact Form.jpg is the visual base — fields are overlaid on top -->
+      <img
+        src="Design%20Info/Contact%20Form.jpg"
+        alt="Old School Amplifiers contact form"
+        class="modal-img"
+      />
+
+      <button
+        class="modal-close"
+        id="btnCloseModal"
+        aria-label="Close contact form"
+      >&#x2715;</button>
+
+      <!-- Form fields overlaid on the empty blue content area of the image -->
+      <div class="modal-form-area">
+        <form id="contactForm" novalidate>
+
+          <input type="hidden" name="access_key" value="ff3a8846-1c9f-4be5-bd92-53b417784282" />
+          <input type="hidden" name="subject"    value="Contact — Old School Amplifiers" />
+          <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" aria-hidden="true" />
+
+          <div class="modal-field" id="field-name">
+            <label for="m-name">NAME ▼ NOM</label>
+            <input type="text" id="m-name" name="name" autocomplete="name" required aria-required="true" />
+          </div>
+
+          <div class="modal-field" id="field-email">
+            <label for="m-email">E-MAIL</label>
+            <input type="email" id="m-email" name="email" autocomplete="email" required aria-required="true" />
+          </div>
+
+          <div class="modal-field" id="field-message">
+            <label for="m-message">MESSAGE</label>
+            <textarea id="m-message" name="message" maxlength="250" rows="3" required aria-required="true"></textarea>
+            <p class="char-counter" id="charCounter" aria-live="polite">0 / 250</p>
+          </div>
+
+          <div class="h-captcha" data-captcha="true"></div>
+
+          <div class="modal-actions">
+            <button type="submit" class="btn-send">SEND</button>
+          </div>
+
+          <p class="form-status" id="formStatus" aria-live="polite"></p>
+
+        </form>
+      </div><!-- /modal-form-area -->
+
+    </div><!-- /modal-frame -->
+  </div><!-- /modal -->
+
+
+  <!-- Web3Forms client (handles hCaptcha automatically) -->
+  <script src="https://web3forms.com/client/script.js" async defer></script>
+  <script defer src="script.js"></script>
+
+</body>
+</html>

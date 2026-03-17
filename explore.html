@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explore — Old School Amplifiers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Highway+Gothic&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <main>
+    <div class="hero-wrapper">
+
+      <img
+        src="Design%20Info/Contact%20Form.jpg"
+        alt="Old School Amplifiers — Amplifiers, Speaker Cabinets, Our Story"
+        class="hero-img"
+      />
+
+      <!-- Nav boxes overlaid on the blue content area of the image -->
+      <button class="explore-nav-box" id="nav-amp"
+              aria-haspopup="listbox" aria-expanded="false">AMPLIFIERS</button>
+      <button class="explore-nav-box" id="nav-cab"
+              aria-haspopup="listbox" aria-expanded="false">SPEAKER CABINETS</button>
+      <button class="explore-nav-box" id="nav-story"
+              aria-haspopup="dialog">OUR STORY</button>
+      <button             class="explore-nav-box" id="nav-contact"
+              aria-haspopup="dialog">CONTACT</button>
+
+      <!-- Amplifiers dropdown -->
+      <div class="model-dropdown" id="ampDropdown" role="listbox" aria-label="Amplifier models">
+        <button class="amp-option" role="option">'69 SUPER</button>
+        <button class="amp-option" role="option">'61 BLONDE</button>
+      </div>
+
+      <!-- Speaker Cabinets dropdown -->
+      <div class="model-dropdown" id="cabDropdown" role="listbox" aria-label="Cabinet models">
+        <button class="amp-option" role="option">4 X 10 CABINET</button>
+        <button class="amp-option" role="option">2 X 12 CABINET</button>
+      </div>
+
+    </div>
+  </main>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       CONTACT MODAL
+  ════════════════════════════════════════════════════ -->
+  <div
+    class="modal-overlay"
+    id="contactModal"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Contact us"
+  >
+    <div class="modal-frame">
+
+      <img
+        src="Design%20Info/Contact%20Form.jpg"
+        alt="Old School Amplifiers contact form"
+        class="modal-img"
+      />
+
+      <button
+        class="modal-close"
+        id="btnCloseModal"
+        aria-label="Close contact form"
+      >&#x2715;</button>
+
+      <div class="modal-form-area">
+        <form id="contactForm" novalidate>
+
+          <input type="hidden" name="access_key" value="ff3a8846-1c9f-4be5-bd92-53b417784282" />
+          <input type="hidden" name="subject"    value="Contact — Old School Amplifiers" />
+          <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" aria-hidden="true" />
+
+          <div class="modal-field" id="field-name">
+            <label for="m-name">NAME ▼ NOM</label>
+            <input type="text" id="m-name" name="name" autocomplete="name" required aria-required="true" />
+          </div>
+
+          <div class="modal-field" id="field-email">
+            <label for="m-email">E-MAIL</label>
+            <input type="email" id="m-email" name="email" autocomplete="email" required aria-required="true" />
+          </div>
+
+          <div class="modal-field" id="field-message">
+            <label for="m-message">MESSAGE</label>
+            <textarea id="m-message" name="message" maxlength="250" rows="3" required aria-required="true"></textarea>
+            <p class="char-counter" id="charCounter" aria-live="polite">0 / 250</p>
+          </div>
+
+          <div class="h-captcha" data-captcha="true"></div>
+
+          <div class="modal-actions">
+            <button type="submit" class="btn-send">SEND</button>
+          </div>
+
+          <p class="form-status" id="formStatus" aria-live="polite"></p>
+
+        </form>
+      </div><!-- /modal-form-area -->
+
+    </div><!-- /modal-frame -->
+  </div><!-- /modal -->
+
+
+  <!-- ═══════════════════════════════════════════════════
+       UNDER CONSTRUCTION MODAL
+  ════════════════════════════════════════════════════ -->
+  <div
+    class="modal-overlay"
+    id="underconstrModal"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Under construction"
+  >
+    <div class="modal-frame">
+
+      <img
+        src="Design%20Info/Contact%20Form.jpg"
+        alt=""
+        class="modal-img"
+        aria-hidden="true"
+      />
+
+      <button
+        class="modal-close"
+        id="btnCloseUnderconstr"
+        aria-label="Close"
+      >&#x2715;</button>
+
+      <div class="underconstr-area">
+        <p class="underconstr-text">UNDER<br>CONSTRUCTION</p>
+      </div>
+
+    </div>
+  </div><!-- /under construction modal -->
+
+
+  <script src="https://web3forms.com/client/script.js" async defer></script>
+  <script defer src="explore.js"></script>
+
+</body>
+</html>

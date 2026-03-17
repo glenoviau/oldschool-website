@@ -1,0 +1,413 @@
+/* ============================================================
+   CUSTOM PROPERTIES
+   ============================================================ */
+:root {
+  --blue:   #A8CEE0;
+  --red:    #e94560;
+  --black:  #000000;
+  --bg:     #F5F5DC;
+  --font:   'Highway Gothic', 'Arial Narrow', sans-serif;
+}
+
+/* ============================================================
+   RESET
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ============================================================
+   PAGE — tiled background pattern over cream
+   ============================================================ */
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--bg);
+  background-image: url('Design%20Info/background%20pattern.png');
+  background-repeat: repeat;
+  background-blend-mode: multiply;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================================
+   HERO WRAPPER — sizes to image, anchors button overlays
+   ============================================================ */
+.hero-wrapper {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+  box-shadow:
+    3px 8px 30px rgba(0, 0, 0, 0.28),
+    5px 16px 52px rgba(0, 0, 0, 0.14);
+}
+
+.hero-img {
+  display: block;
+  /* Mobile-first: fit width */
+  width: 100%;
+  height: auto;
+  max-width: calc(100vw - 3rem);
+}
+
+/* Taller screens: constrain by height so card doesn't overflow */
+@media (min-height: 480px) {
+  .hero-img {
+    width: auto;
+    height: calc(100vh - 3rem);
+    max-width: calc(100vw - 3rem);
+    max-height: calc(100vh - 3rem);
+  }
+}
+
+/* ============================================================
+   TRANSPARENT BUTTON OVERLAYS on hero image
+   — positions are percentages of the image dimensions
+   ============================================================ */
+.hero-btn {
+  position: absolute;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  /* Visually invisible — image provides the button appearance */
+  font-size: 0;
+  color: transparent;
+  padding: 0;
+  border-radius: 2px;
+  transition: background 0.15s;
+}
+
+.hero-btn:hover,
+.hero-btn:focus-visible {
+  background: rgba(255, 255, 255, 0.18);
+  outline: none;
+}
+
+.hero-btn:focus-visible {
+  outline: 2px dashed var(--black);
+  outline-offset: 2px;
+}
+
+/* Fine-tune these percentages to match button positions in Hero.jpg */
+.btn-explore {
+  left:   22%;
+  top:    67%;
+  width:  20%;
+  height: 7.5%;
+}
+
+.btn-contact {
+  left:   49%;
+  top:    67%;
+  width:  20%;
+  height: 7.5%;
+}
+
+/* ============================================================
+   VISUALLY HIDDEN (accessible hide)
+   ============================================================ */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ============================================================
+   EXPLORE PAGE — nav boxes overlaid on Contact Form.jpg
+   ============================================================ */
+.explore-nav-box {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: var(--font);
+  font-size: clamp(0.9rem, 1.9vh, 1.5rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--black);
+  text-decoration: none;
+  background: transparent;
+  font-weight: 700;
+  border: 2.5px solid var(--black);
+  border-radius: 2px;
+  cursor: pointer;
+  padding: 0 4%;
+  line-height: 1.15;
+  transition: background 0.15s, color 0.15s;
+}
+.explore-nav-box:hover,
+.explore-nav-box:focus-visible {
+  background: var(--black);
+  color: var(--blue);
+  outline: none;
+}
+.explore-nav-box:focus-visible {
+  outline: 2px dashed var(--black);
+  outline-offset: 2px;
+}
+
+
+/* Individual box positions — percentages of the image dimensions */
+#nav-amp     { left: 17%;  top: 45.5%; width: 25%; height: 9%; }
+#nav-cab     { left: 46%;  top: 45.5%; width: 25%; height: 9%; }
+#nav-story   { left: 17%;  top: 60.5%; width: 25%; height: 9%; }
+#nav-contact { left: 46%;  top: 60.5%; width: 25%; height: 9%; }
+
+/* ============================================================
+   AMPLIFIERS DROPDOWN
+   ============================================================ */
+.model-dropdown {
+  position: absolute;
+  width: 25%;
+  background: var(--black);
+  border: 2.5px solid var(--black);
+  border-top: none;    /* seamless join with button above */
+  display: none;
+  flex-direction: column;
+  z-index: 20;
+}
+.model-dropdown.active { display: flex; }
+
+/* Position each dropdown under its button, indented 20% of box width (5% of image) */
+#ampDropdown { left: 22%; top: 54.5%; }
+#cabDropdown { left: 51%; top: 54.5%; }
+
+.amp-option {
+  font-family: var(--font);
+  font-size: clamp(0.8rem, 1.6vh, 1.25rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--blue);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(168, 206, 224, 0.25);
+  padding: 6% 4%;
+  cursor: pointer;
+  text-align: center;
+  line-height: 1.15;
+  transition: background 0.15s, color 0.15s;
+}
+.amp-option:last-child  { border-bottom: none; }
+.amp-option:hover,
+.amp-option:focus-visible {
+  background: var(--blue);
+  color: var(--black);
+  outline: none;
+}
+
+/* ============================================================
+   UNDER CONSTRUCTION OVERLAY
+   ============================================================ */
+.underconstr-area {
+  position: absolute;
+  top: 27%;
+  left: 9%;
+  right: 18%;
+  bottom: 11%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5%;
+}
+
+.underconstr-text {
+  font-family: var(--font);
+  font-size: clamp(1.4rem, 5.5vh, 4rem);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--black);
+  line-height: 1.1;
+}
+
+/* ============================================================
+   MODAL OVERLAY
+   ============================================================ */
+.modal-overlay {
+  display: flex;
+  visibility: hidden;
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 8, 0.68);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.modal-overlay.active {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* ============================================================
+   MODAL FRAME — Contact Form.jpg as base image, fields overlaid
+   Same sizing approach as the hero wrapper
+   ============================================================ */
+.modal-frame {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+  box-shadow:
+    3px 8px 30px rgba(0, 0, 0, 0.28),
+    5px 16px 52px rgba(0, 0, 0, 0.14);
+}
+
+.modal-img {
+  display: block;
+  height: calc(100vh - 3rem);
+  width: auto;
+  max-width: calc(100vw - 3rem);
+  max-height: calc(100vh - 3rem);
+}
+
+/* ── Close button — positioned in top-right of content area ── */
+.modal-close {
+  position: absolute;
+  top: 3.5%;
+  right: 19%;
+  background: none;
+  border: none;
+  font-size: clamp(0.7rem, 1.5vh, 1.1rem);
+  line-height: 1;
+  cursor: pointer;
+  color: var(--black);
+  padding: 0.2rem 0.3rem;
+  font-family: sans-serif;
+  z-index: 10;
+}
+.modal-close:hover { opacity: 0.55; }
+.modal-close:focus-visible { outline: 2px dashed var(--black); outline-offset: 2px; }
+
+/* ── Form area — overlaid on the empty blue content area of the image ── */
+.modal-form-area {
+  position: absolute;
+  top: 27%;
+  left: 9%;
+  right: 18%;
+  bottom: 11%;
+  padding-top: 5%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ── Form fields ── */
+.modal-field {
+  margin-bottom: 3%;
+}
+.modal-field label {
+  display: block;
+  font-family: var(--font);
+  font-size: clamp(0.42rem, 0.9vh, 0.65rem);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 0.1rem;
+}
+.modal-field input,
+.modal-field textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid var(--black);
+  outline: none;
+  font-family: var(--font);
+  font-size: clamp(0.55rem, 1.1vh, 0.8rem);
+  color: var(--black);
+  padding: 0.1rem 0.1rem 0.2rem;
+  border-radius: 0;
+  resize: none;
+}
+.modal-field input:focus,
+.modal-field textarea:focus {
+  box-shadow: 0 2px 0 var(--black);
+}
+.modal-field textarea {
+  display: block;
+  min-height: 4em;
+}
+.char-counter {
+  text-align: right;
+  font-size: clamp(0.35rem, 0.65vh, 0.5rem);
+  letter-spacing: 0.08em;
+  color: var(--black);
+  opacity: 0.55;
+  margin-top: 2%;
+}
+
+/* ── Autofill override — suppress browser's white background ── */
+.modal-field input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px var(--blue) inset;
+  -webkit-text-fill-color: var(--black);
+}
+
+/* ── Progressive field spacing ── */
+#field-name input    { margin-top: 1%; }   /* name label  → name input    */
+#field-email         { margin-top: 2%; }   /* name input  → email label   */
+#field-email input   { margin-top: 3%; }   /* email label → email input   */
+#field-message       { margin-top: 4%; }   /* email input → message label */
+#field-message textarea { margin-top: 5%; } /* message label → textarea   */
+
+/* ── hCaptcha ── */
+.h-captcha {
+  margin: 2% 0 1%;
+  transform: scale(0.78);
+  transform-origin: left center;
+}
+
+/* ── Send button ── */
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 2%;
+}
+.btn-send {
+  font-family: var(--font);
+  font-size: clamp(0.48rem, 0.95vh, 0.72rem);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background-color: var(--black);
+  color: #fff;
+  border: 2px solid var(--black);
+  padding: 0.4rem 1.8rem;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: opacity 0.14s;
+}
+.btn-send:hover { opacity: 0.8; }
+.btn-send:focus-visible { outline: 2px dashed var(--black); outline-offset: 3px; }
+
+/* ── Form status message ── */
+.form-status {
+  text-align: center;
+  font-family: var(--font);
+  font-size: clamp(0.38rem, 0.75vh, 0.58rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--black);
+  margin-top: 1.5%;
+  min-height: 1.2em;
+}
+.form-status.success { color: #1a6630; }
+.form-status.error   { color: #c0392b; }
