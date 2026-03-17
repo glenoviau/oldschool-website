@@ -152,9 +152,9 @@ body {
 }
 
 
-@media (orientation: landscape) and (max-height: 500px) {
+@media (orientation: landscape) and (max-height: 600px) {
   .explore-nav-box {
-    font-size: clamp(0.35rem, 1.2vh, 1rem);
+    font-size: clamp(0.4rem, 1vh, 1.2rem);
   }
 }
 
