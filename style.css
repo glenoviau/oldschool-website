@@ -55,20 +55,10 @@ body {
 
 .hero-img {
   display: block;
-  /* Mobile-first: fit width */
-  width: 100%;
+  width: auto;
   height: auto;
   max-width: calc(100vw - 3rem);
-}
-
-/* Taller screens: constrain by height so card doesn't overflow */
-@media (min-height: 480px) {
-  .hero-img {
-    width: auto;
-    height: calc(100vh - 3rem);
-    max-width: calc(100vw - 3rem);
-    max-height: calc(100vh - 3rem);
-  }
+  max-height: calc(100vh - 3rem);
 }
 
 /* ============================================================
@@ -273,8 +263,8 @@ body {
 
 .modal-img {
   display: block;
-  height: calc(100vh - 3rem);
   width: auto;
+  height: auto;
   max-width: calc(100vw - 3rem);
   max-height: calc(100vh - 3rem);
 }
