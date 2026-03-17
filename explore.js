@@ -1,4 +1,18 @@
 /* ============================================================
+   IMAGE SCALE — sets --img-w so fonts scale with the rendered image
+   ============================================================ */
+function setImgScale() {
+  const img = document.querySelector('.hero-img');
+  if (!img) return;
+  const w = img.getBoundingClientRect().width;
+  if (w > 0) document.documentElement.style.setProperty('--img-w', w + 'px');
+}
+
+const heroImg = document.querySelector('.hero-img');
+heroImg.complete ? setImgScale() : heroImg.addEventListener('load', setImgScale);
+window.addEventListener('resize', setImgScale);
+
+/* ============================================================
    DROPDOWN HELPER — generic open/close for both dropdowns
    ============================================================ */
 const allDropdowns = [];

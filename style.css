@@ -7,6 +7,7 @@
   --black:  #000000;
   --bg:     #F5F5DC;
   --font:   'Highway Gothic', 'Arial Narrow', sans-serif;
+  --img-w:  800px; /* overridden by JS — proportional font scaling */
 }
 
 /* ============================================================
@@ -126,7 +127,7 @@ body {
   justify-content: center;
   text-align: center;
   font-family: var(--font);
-  font-size: clamp(0.5rem, 1.2vh, 1.5rem);
+  font-size: calc(var(--img-w) * 0.022);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--black);
@@ -151,18 +152,6 @@ body {
   outline-offset: 2px;
 }
 
-
-@media (orientation: landscape) and (max-height: 600px) {
-  .explore-nav-box {
-    font-size: clamp(0.4rem, 1vh, 1.2rem);
-  }
-  .underconstr-text {
-    font-size: clamp(0.7rem, 2.4vh, 2.4rem);
-  }
-  .amp-option {
-    font-size: clamp(0.4rem, 1vh, 1rem);
-  }
-}
 
 /* Individual box positions — percentages of the image dimensions */
 #nav-amp     { left: 17%;  top: 45.5%; width: 25%; height: 9%; }
@@ -191,7 +180,7 @@ body {
 
 .amp-option {
   font-family: var(--font);
-  font-size: clamp(0.5rem, 1.3vh, 1.25rem);
+  font-size: calc(var(--img-w) * 0.019);
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -230,7 +219,7 @@ body {
 
 .underconstr-text {
   font-family: var(--font);
-  font-size: clamp(0.45rem, 1.5vh, 1.5rem);
+  font-size: calc(var(--img-w) * 0.045);
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
