@@ -156,6 +156,9 @@ body {
   .explore-nav-box {
     font-size: clamp(0.4rem, 1vh, 1.2rem);
   }
+  .underconstr-text {
+    font-size: clamp(0.7rem, 2.4vh, 2.4rem);
+  }
 }
 
 /* Individual box positions — percentages of the image dimensions */
@@ -224,7 +227,7 @@ body {
 
 .underconstr-text {
   font-family: var(--font);
-  font-size: clamp(1.4rem, 5.5vh, 4rem);
+  font-size: clamp(0.9rem, 3vh, 3rem);
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
