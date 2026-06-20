@@ -52,11 +52,16 @@ function makeDropdown(btnId, dropdownId) {
    ============================================================ */
 const amp = makeDropdown('nav-amp', 'ampDropdown');
 
-amp.dropdown.querySelectorAll('.amp-option').forEach(opt => {
-  opt.addEventListener('click', () => {
-    amp.close();
-    openUnderconstr();
-  });
+const ampOptions = amp.dropdown.querySelectorAll('.amp-option');
+
+ampOptions[0].addEventListener('click', () => {
+  amp.close();
+  window.location.href = 'pages/69-super.html';
+});
+
+ampOptions[1].addEventListener('click', () => {
+  amp.close();
+  openUnderconstr();
 });
 
 /* ============================================================

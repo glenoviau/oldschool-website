@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>'69 Super — Old School Amplifiers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Highway+Gothic&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+
+  <main>
+    <div class="product-wrapper">
+
+      <img
+        src="../Design%20Info/69%20Super%20Product%20Page%20image.jpg"
+        alt="'69 Super — Old School Amplifiers product page"
+        class="product-base-img"
+        id="productBase"
+      />
+
+      <!-- Photo gallery — positioned in the blank area of the base image -->
+      <div class="product-gallery">
+        <img
+          id="mainPhoto"
+          src="../images/69%20Super/69%20Super%20Isometric.jpg"
+          alt="'69 Super amplifier — isometric view"
+          class="product-main-photo"
+        />
+        <div class="product-thumbs" role="list">
+          <button class="thumb-btn active" role="listitem"
+            aria-label="Isometric view"
+            data-src="../images/69%20Super/69%20Super%20Isometric.jpg"
+            data-alt="'69 Super amplifier — isometric view">
+            <img src="../images/69%20Super/69%20Super%20Isometric.jpg" alt="" />
+          </button>
+          <button class="thumb-btn" role="listitem"
+            aria-label="Front view"
+            data-src="../images/69%20Super/69%20Super%20Front.jpg"
+            data-alt="'69 Super amplifier — front view">
+            <img src="../images/69%20Super/69%20Super%20Front.jpg" alt="" />
+          </button>
+          <button class="thumb-btn" role="listitem"
+            aria-label="Drive controls"
+            data-src="../images/69%20Super/69%20Super%20Drive.jpg"
+            data-alt="'69 Super amplifier — drive controls">
+            <img src="../images/69%20Super/69%20Super%20Drive.jpg" alt="" />
+          </button>
+          <button class="thumb-btn" role="listitem"
+            aria-label="Stack view"
+            data-src="../images/69%20Super/69%20Super%20Stack.jpg"
+            data-alt="'69 Super amplifier — stack view">
+            <img src="../images/69%20Super/69%20Super%20Stack.jpg" alt="" />
+          </button>
+          <button class="thumb-btn" role="listitem"
+            aria-label="Back isometric view"
+            data-src="../images/69%20Super/69%20Super%20Back%20Iso%201.jpg"
+            data-alt="'69 Super amplifier — back isometric view">
+            <img src="../images/69%20Super/69%20Super%20Back%20Iso%201.jpg" alt="" />
+          </button>
+        </div>
+      </div><!-- /product-gallery -->
+
+      <!-- Section buttons — transparent overlays over the image-drawn buttons -->
+      <div class="product-sections">
+        <button class="section-btn" data-section="features">
+          <span class="visually-hidden">FEATURES</span>
+        </button>
+        <button class="section-btn" data-section="specifications">
+          <span class="visually-hidden">SPECIFICATIONS</span>
+        </button>
+        <button class="section-btn" data-section="lore">
+          <span class="visually-hidden">LORE</span>
+        </button>
+        <button class="section-btn" data-section="description">
+          <span class="visually-hidden">DESCRIPTION</span>
+        </button>
+      </div>
+
+      <!-- Section panels — overlay the product page when active -->
+      <!-- Features panel — hotspot overlays on numbered circles -->
+      <div class="section-panel features-panel" data-panel="features">
+        <img
+          src="../Design%20Info/69%20Super%20Features.jpg"
+          alt="'69 Super — Features"
+          class="features-base-img"
+        />
+
+        <!-- Upper image hotspots (1–6) → popup appears over lower image -->
+        <button class="feature-hotspot" data-num="1"  aria-label="Cabinet"></button>
+        <button class="feature-hotspot" data-num="2"  aria-label="Inputs"></button>
+        <button class="feature-hotspot" data-num="3"  aria-label="Grill Cloth"></button>
+        <button class="feature-hotspot" data-num="4"  aria-label="Master Volume"></button>
+        <button class="feature-hotspot" data-num="5"  aria-label="Overdrive"></button>
+        <button class="feature-hotspot" data-num="6"  aria-label="Controls"></button>
+
+        <!-- Lower image hotspots (7–10) → popup appears over upper image -->
+        <button class="feature-hotspot" data-num="7"  aria-label="Foot Switch"></button>
+        <button class="feature-hotspot" data-num="8"  aria-label="Power Input"></button>
+        <button class="feature-hotspot" data-num="9"  aria-label="Speaker Output"></button>
+        <button class="feature-hotspot" data-num="10" aria-label="Tubes"></button>
+
+        <!-- Feature card popup — shown on hotspot hover/focus -->
+        <div class="feature-popup" id="featurePopup" hidden>
+          <img id="featurePopupImg" src="" alt="" />
+        </div>
+      </div>
+      <img
+        src="../Design%20Info/69%20Super%20Specifications.jpg"
+        alt="'69 Super — Specifications"
+        class="section-panel"
+        data-panel="specifications"
+      />
+      <img
+        src="../Design%20Info/69%20Super%20Lore.jpg"
+        alt="'69 Super — Lore"
+        class="section-panel"
+        data-panel="lore"
+      />
+      <img
+        src="../Design%20Info/69%20Super%20Description.jpg"
+        alt="'69 Super — Description"
+        class="section-panel"
+        data-panel="description"
+      />
+
+      <!-- Logo home links — product page base image -->
+      <a href="../index.html" class="logo-home-link product-logo-top"    aria-label="Old School Amplifiers — home"></a>
+      <a href="../index.html" class="logo-home-link product-logo-bottom" aria-label="Old School Amplifiers — home"></a>
+
+      <!-- Close button — returns to product page from any section panel -->
+      <button class="panel-close" id="panelClose" aria-label="Back to product page">&#x2715;</button>
+
+      <!-- Lore page — transparent link overlay over the URL text -->
+      <a
+        class="lore-link"
+        id="loreLink"
+        href="https://www.fender.com/articles/parts-and-accessories/going-low-the-history-of-the-bassman"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Fender Bassman history article (opens in new tab)"
+      ></a>
+
+    </div><!-- /product-wrapper -->
+  </main>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       LIGHTBOX
+  ════════════════════════════════════════════════════ -->
+  <div
+    class="lightbox"
+    id="lightbox"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Image viewer"
+  >
+    <img id="lightboxImg" class="lightbox-img" src="" alt="" />
+    <button class="lightbox-arrow lightbox-prev" id="lightboxPrev" aria-label="Previous image">&#8249;</button>
+    <button class="lightbox-arrow lightbox-next" id="lightboxNext" aria-label="Next image">&#8250;</button>
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">&#x2715;</button>
+  </div>
+
+
+  <script defer src="../69-super.js"></script>
+
+</body>
+</html>
